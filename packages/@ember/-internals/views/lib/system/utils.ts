@@ -1,9 +1,9 @@
+import { Renderer } from '@ember/-internals/glimmer';
+import { Component } from '@ember/-internals/glimmer/lib/utils/curly-component-state-bucket';
 import { getOwner, Owner } from '@ember/-internals/owner';
 /* globals Element */
 import { guidFor } from '@ember/-internals/utils';
 import { Dict, Option } from '@glimmer/interfaces';
-import { Renderer } from '@ember/-internals/glimmer';
-import { Component } from '@ember/-internals/glimmer/lib/utils/curly-component-state-bucket';
 
 /**
 @module ember
