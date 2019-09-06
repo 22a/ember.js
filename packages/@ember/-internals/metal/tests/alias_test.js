@@ -51,6 +51,9 @@ moduleFor(
       defineProperty(obj1, 'baz', alias('foo'));
       defineProperty(obj1, 'baz', alias('bar')); // redefine baz
 
+      // bootstrap the alias
+      obj1.baz;
+
       addObserver(obj1, 'baz', incrementCount);
 
       set(obj1, 'foo', 'FOO');
@@ -82,6 +85,9 @@ moduleFor(
       let obj2 = obj1.create();
       defineProperty(obj2, 'baz', alias('bar')); // override baz
 
+      // bootstrap the alias
+      obj2.baz;
+
       set(obj2, 'foo', 'FOO');
       await runLoopSettled();
 
@@ -98,6 +104,9 @@ moduleFor(
     async ['@test an observer of the alias works if added after defining the alias'](assert) {
       defineProperty(obj, 'bar', alias('foo.faz'));
 
+      // bootstrap the alias
+      obj.bar;
+
       addObserver(obj, 'bar', incrementCount);
       set(obj, 'foo.faz', 'BAR');
 
@@ -108,6 +117,9 @@ moduleFor(
     async ['@test an observer of the alias works if added before defining the alias'](assert) {
       addObserver(obj, 'bar', incrementCount);
       defineProperty(obj, 'bar', alias('foo.faz'));
+
+      // bootstrap the alias
+      obj.bar;
 
       set(obj, 'foo.faz', 'BAR');
 
